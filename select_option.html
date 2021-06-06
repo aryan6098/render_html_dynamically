@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aqua;
+        margin: 0px;
+        font-family: sans-serif;
+        font-size: 20px;
+      }
+      #container {
+        height: auto;
+        width: 50%;
+        background: rgb(247, 243, 243);
+        font-weight: 700;
+        border: 3px solid black;
+        margin: 50% 50%;
+        border-radius: 20px;
+        margin: 200px 400px;
+        padding: 20px;
+      }
+    </style>
+    <script>
+      function populate(s1, s2) {
+        // console.log(s1.value);
+        var s1 = document.getElementById(s1);
+        console.log(s1.id);
+        var s2 = document.getElementById(s2);
+        s2.innerHTML = "";
+        if (s1.value == "Iphone") {
+          console.log(s1.value);
+          var optionArray = [
+            "|",
+            "iphone 6|Iphone 6",
+            "iphone 7|Iphone 7",
+            "iphone x|Iphone x",
+            "iphone 12|Iphone 12",
+          ];
+        } else if (s1.value == "Samsung") {
+          var optionArray = [
+            "|",
+            "samsung A7|Samsung A7",
+            "samsung Note|Samsung Note",
+            "samsung s10|Samsung s10",
+          ];
+        } else if (s1.value == "Nokia") {
+          var optionArray = [
+            "|",
+            "nokia 5.4|Nokia 5.4",
+            "nokia 10|Nokia 10",
+            "nokia 5s|Nokia 5s",
+          ];
+        }
+        for (var option in optionArray) {
+          var pair = optionArray[option].split("|");
+          var newOption = document.createElement("option");
+          newOption.value = pair[0];
+          newOption.innerHTML = pair[1];
+          s2.options.add(newOption);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <h2>Choose Mobile 📴</h2>
+      <hr />
+      <label for="for-car-make">Choose Mobile Series</label>
+      <select id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
+        <option value=""></option>
+        <option value="Iphone">Iphone</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Nokia">Nokia</option>
+      </select>
+      <hr />
+      <label for="for-car-model">Choose Mobile Model</label>
+      <select id="slct2" name="slct2"></select>
+      <hr />
+    </div>
+  </body>
+</html>
