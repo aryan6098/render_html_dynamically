@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery Loading Local JSON File</title>
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+      integrity="undefined"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      integrity="undefined"
+      crossorigin="anonymous"
+    />
+    <style>
+      #container {
+        margin: 20px 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="div1"></div> -->
+    <div id="container">
+      <div class="table-responsive">
+        <h1 align="center">
+          JSON data to HTML Table using Ajax Jquery getJSON Method
+        </h1>
+        <br />
+        <table class="table table-bordered table-striped" id="employee_table">
+          <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Relased</th>
+            <th>ImdbRating</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $.getJSON("data.json", function (data) {
+          var employee_data = "";
+          $.each(data, function () {
+            $.each(this, function (key, value) {
+              employee_data += "<tr>";
+              employee_data += "<td>" + value.Title + "</td>";
+              employee_data += "<td>" + value.Year + "</td>";
+              employee_data += "<td>" + value.Released + "</td>";
+              employee_data += "<td>" + value.imdbRating + "</td>";
+              employee_data += "</tr>";
+            });
+          });
+
+          $("#employee_table").append(employee_data);
+        });
+      });
+    </script>
+  </body>
+</html>
