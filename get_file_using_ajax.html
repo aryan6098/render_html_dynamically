@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 align="center">Get Html throgh Ajax 🦞</h1>
+    <div id="div1"></div>
+    <script>
+      const xhr = new XMLHttpRequest();
+      const container = document.getElementById("div1");
+      xhr.onload = function () {
+        if (this.status === 200) {
+          container.innerHTML = xhr.responseText;
+        } else {
+          console.warn("did not recive 200");
+        }
+      };
+      xhr.open("get", "select_option.html");
+      xhr.send();
+    </script>
+  </body>
+</html>
